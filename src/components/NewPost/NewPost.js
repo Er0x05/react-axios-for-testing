@@ -10,19 +10,16 @@ class NewPost extends Component {
         author: 'Max'
     }
 
-    postHandler = () => {
-        const post = {
+    postDataHandler = () => {
+        const data = {
             title: this.state.title,
             body: this.state.content,
             author: this.state.author
-        }
-        axios.post('http://jsonplaceholder.typicode.com/posts',post)
-            .then( res=>{
-                console.log(res)
-            })
-            .catch( err=>{
-                console.log(err)
-            })
+        };
+        axios.post('/posts', data)
+            .then(response => {
+                console.log(response);
+            });
     }
 
     render () {
@@ -38,7 +35,7 @@ class NewPost extends Component {
                     <option value="Max">Max</option>
                     <option value="Manu">Manu</option>
                 </select>
-                <button onClick={this.postHandler}>Add Post</button>
+                <button onClick={this.postDataHandler}>Add Post</button>
             </div>
         );
     }
